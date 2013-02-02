@@ -22,7 +22,7 @@
     var iframe, body, opacity;
 
     iframe = document.createElement('iframe')
-    body = document.body || doucument.documentElement;
+    body = document.body || document.documentElement;
     opacity = this.debugging ? 0.6 : 0;
 
     iframe.style.position = 'absolute';
