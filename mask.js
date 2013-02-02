@@ -1,8 +1,9 @@
+/*! Licensed under MIT. (c) Sofish Lin https://github.com/sofish/mask.js */
 (function() {
 
   if(typeof Mask !== 'undefined') return;
 
-  var mask, fire, position
+  var mask, fire, position;
 
   // Get position of a DOM element
   position = function(el) {
@@ -21,8 +22,8 @@
   mask = function(left, top, width, height) {
     var iframe, body, opacity;
 
-    iframe = document.createElement('iframe')
-    body = document.body || doucument.documentElement;
+    iframe = document.createElement('iframe');
+    body = document.body || document.documentElement;
     opacity = this.debugging ? 0.6 : 0;
 
     iframe.style.position = 'absolute';
@@ -33,8 +34,9 @@
     iframe.style.height = height + 'px';
     iframe.style.top = top + body.offsetTop + 'px';
     iframe.style.left = left + body.offsetLeft + 'px';
+    this.debugging && (iframe.style.backgroundColor = '#f36');
 
-    !this.debugging && iframe.setAttribute('frameBorder', '0');
+    iframe.setAttribute('frameBorder', '0');
     iframe.setAttribute('id', 'mask-' + this.count);
     iframe.setAttribute('scrolling', 'no');
 
@@ -49,7 +51,7 @@
       var el = elements[i]
         , pos = position(el);
       pos.push(el.offsetWidth, el.offsetHeight);
-      el.setAttribute('mask-id', this.count)
+      el.setAttribute('mask-id', this.count);
       mask.apply(this, pos);
     }
   }
@@ -69,7 +71,7 @@
   // default debugging settings
   Mask = { count: 0 };
 
-  // Add show debug
+  // debug
   Mask.debug = function() {
     this.debugging = true;
   }
@@ -77,8 +79,9 @@
   // show mask
   Mask.set = function() {
     return fire.call(this, arguments);
-  };
+  }
 
+  // remove mask
   Mask.remove = function() {
     return free.call(this, arguments);
   }
