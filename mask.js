@@ -50,6 +50,10 @@
     for(; i < len; i++) {
       var el = elements[i]
         , pos = position(el);
+
+      // if a mask is exits
+      if(document.getElementById('mask-' + el.getAttribute('mask-id'))) return;
+
       pos.push(el.offsetWidth, el.offsetHeight);
       el.setAttribute('mask-id', this.count);
       mask.apply(this, pos);
