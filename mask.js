@@ -55,7 +55,7 @@
       if(document.getElementById('mask-' + el.getAttribute('mask-id'))) return;
 
       pos.push(el.offsetWidth, el.offsetHeight);
-      el.setAttribute('mask-id', this.count);
+      el.setAttribute('mask-id', ++this.count);
       mask.apply(this, pos);
     }
   }
@@ -67,7 +67,7 @@
     for(; i < len; i++) {
       var id = elements[i].getAttribute('mask-id')
         , iframe = document.getElementById('mask-' + id);
-      iframe.parentNode.removeChild(iframe);
+      iframe && iframe.parentNode.removeChild(iframe);
     }
 
   }
