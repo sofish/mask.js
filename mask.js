@@ -3,7 +3,7 @@
 
   if(typeof Mask !== 'undefined') return;
 
-  var mask, fire, position;
+  var mask, fire, free, position;
 
   // Get position of a DOM element
   position = function(el) {
